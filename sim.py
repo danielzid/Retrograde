@@ -1,46 +1,46 @@
+# sim.py
 import pygame
 from body import Body
-from physics import compute_gravity
-from math import sqrt
+from physics import apply_gravity
 
-pygame.init()
-WIDTH, HEIGHT = 1200, 800
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-clock = pygame.time.Clock()
+class Engine:
+    def __init__(self):
+        # initialize pygame and core engine state
+        pygame.init()
+        self.screen = pygame.display.set_mode((800, 600))
+        self.clock = pygame.time.Clock()
+        self.bodies = []
+        self.running = True
 
-bodies = []
-spawning = False
-spawn_x = spawn_y = 0
+    def handle_events(self):
+        # process window and input events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = pygame.mouse.get_pos()
+                self.bodies.append(Body(x, y))
 
-running = True
-while running:
-    dt = clock.tick(60) / 1000
+    def update(self, dt):
+        # update physics and body state
+        for body in self.bodies:
+            apply_gravity(body, dt)
+            body.update(dt)
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+    def draw(self):
+        # render all bodies to the screen
+        self.screen.fill((0, 0, 0))
+        for body in self.bodies:
+            body.draw(self.screen)
+        pygame.display.flip()
 
-        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-            spawning = True
-            spawn_x, spawn_y = pygame.mouse.get_pos()
+    def run(self):
+        # main loop controlling events, updates, and rendering
+        while self.running:
+            dt = self.clock.tick(60) / 1000
+            self.handle_events()
+            self.update(dt)
+            self.draw()
 
-        if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
-            if spawning:
-                mx, my = pygame.mouse.get_pos()
-                vx = (mx - spawn_x) * 0.02
-                vy = (my - spawn_y) * 0.02
-                bodies.append(Body(spawn_x, spawn_y, vx, vy, mass=50, radius=5))
-                spawning = False
-
-    ax, ay = compute_gravity(bodies, G=1.3, soften=30)
-
-    for i, b in enumerate(bodies):
-        b.update(ax[i], ay[i], dt)
-
-    screen.fill((0, 0, 0))
-    for b in bodies:
-        b.draw(screen)
-
-    pygame.display.flip()
-
-pygame.quit()
+if __name__ == "__main__":
+    Engine().run()

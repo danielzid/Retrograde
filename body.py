@@ -1,20 +1,20 @@
+# body.py
 import pygame
-from math import sqrt
 
 class Body:
-    def __init__(self, x, y, vx, vy, mass, radius):
+    def __init__(self, x, y):
+        # position and velocity for each body
         self.x = x
         self.y = y
-        self.vx = vx
-        self.vy = vy
-        self.mass = mass
-        self.radius = radius
+        self.vx = 0
+        self.vy = 0
+        self.radius = 4
 
-    def update(self, ax, ay, dt):
-        self.vx += ax * dt
-        self.vy += ay * dt
+    def update(self, dt):
+        # integrate velocity into position
         self.x += self.vx * dt
         self.y += self.vy * dt
 
-    def draw(self, screen):
-        pygame.draw.circle(screen, (255, 255, 255), (int(self.x), int(self.y)), self.radius)
+    def draw(self, surface):
+        # draw the body as a small circle
+        pygame.draw.circle(surface, (255, 255, 255), (int(self.x), int(self.y)), self.radius)
