@@ -1,41 +1,49 @@
 # sim.py
 import pygame
 from body import Body
-from physics import apply_gravity
+from physics import compute_accelerations
 
 class Engine:
     def __init__(self):
-        # initialize pygame and core engine state
         pygame.init()
-        self.screen = pygame.display.set_mode((800, 600))
+        self.screen = pygame.display.set_mode((900, 700))
+        pygame.display.set_caption("Retrograde")
         self.clock = pygame.time.Clock()
         self.bodies = []
         self.running = True
 
+    def spawn_body(self, x, y):
+        # fixed mass for now
+        mass = 80
+        b = Body(x, y, mass)
+        self.bodies.append(b)
+
     def handle_events(self):
-        # process window and input events
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
+
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = pygame.mouse.get_pos()
-                self.bodies.append(Body(x, y))
+                self.spawn_body(x, y)
 
     def update(self, dt):
-        # update physics and body state
-        for body in self.bodies:
-            apply_gravity(body, dt)
-            body.update(dt)
+        # gravity
+        ax, ay = compute_accelerations(self.bodies)
+
+        # integrate
+        for i, b in enumerate(self.bodies):
+            b.vx += ax[i] * dt
+            b.vy += ay[i] * dt
+            b.update(dt)
 
     def draw(self):
-        # render all bodies to the screen
         self.screen.fill((0, 0, 0))
-        for body in self.bodies:
-            body.draw(self.screen)
+        for b in self.bodies:
+            b.draw(self.screen)
         pygame.display.flip()
 
     def run(self):
-        # main loop controlling events, updates, and rendering
         while self.running:
             dt = self.clock.tick(60) / 1000
             self.handle_events()
