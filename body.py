@@ -27,14 +27,14 @@ class Body:
         pygame.draw.circle(surf, color, (int(self.x), int(self.y)), self.radius)
 
     def body_color(self):
-        # simple mass → color mapping
+        # mass - color mapping
         m = self.mass
         if m < 20:
-            return (220, 60, 50)
+            return (225, 65, 55)
         if m < 60:
             return (255, 160, 95)
         if m < 150:
-            return (255, 222, 138)
+            return (255, 225, 138)
         if m < 400:
             return (245, 248, 248)
         if m < 900:
