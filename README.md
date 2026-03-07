@@ -12,7 +12,6 @@ Tech Stack:
 Python
 NumPy
 Pygame
-## Previews
 
 ---
 
