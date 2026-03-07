@@ -1,9 +1,9 @@
 # RETROGRADE
-### N-Body Gravitational Simulator
+### N-Body Physics Simulator
 
 > *Galaxies, black holes, solar systems, atomic chaos. Set the rules and see what the universe does with them.*
 
-Retrograde is an interactive N-body gravity simulator built with Python and Pygame. Spawn stars, binary systems, solar systems, singularities, and anomalies, then watch Newtonian (and not so Newtonian) physics do the rest.
+Retrograde is an interactive N-body physcis simulator built with Python and Pygame. Spawn stars, binary systems, solar systems, singularities, and anomalies, then watch Newtonian (and not so Newtonian) physics do the rest.
 
 Retrograde grew out of a 5th grade science fair project where a model solar system was built and animated by hand, filmed using the camera on a brand new Nintendo 3DS. That project sparked a fascination with orbital mechanics and how so much complexity can emerge from such a simple rule. This is the grown up version of that idea.
 
