@@ -1,17 +1,14 @@
 # RETROGRADE
 ### N-Body Physics Simulator
-![demo_GIF2](https://github.com/user-attachments/assets/fac97458-3ed9-400c-91c7-4a0366059a1e)
+![demo_GIF2](https://github.com/user-attachments/assets/08ca8df9-e91f-4fe4-98ab-8f407027d055)
 
 > *Celestial harmony, Atomic chaos, Real and Impossible physics.*
 
-Retrograde is an interactive N-body physcis engine built with Python, Numpy and Pygame. Spawn stars, binary systems, solar systems, singularities, and anomalies, then watch Newtonian (and not so Newtonian) physics do the rest.
+Retrograde is an interactive N-body physics engine built with Python, NumPy and Pygame. Spawn stars, binary systems, solar systems, singularities, and anomalies, then watch Newtonian (and not so Newtonian) physics do the rest.
 
 Retrograde grew out of a 5th-grade science fair project where a model solar system was hand built and manually animated using the camera of a Nintendo 3DS. That project sparked a fascination with orbital mechanics and how so much complexity can emerge from such simple rules. This project is the natural evolution of that idea.
 
-Tech Stack:
-Python
-NumPy
-Pygame
+Tech Stack: Python, NumPy, Pygame
 
 ---
 
@@ -20,7 +17,6 @@ Pygame
 [![Watch the demo](https://img.shields.io/badge/Watch-Demo-red?style=for-the-badge&logo=youtube)](YOUR_VIDEO_LINK_HERE)
 
 ---
-
 
 **Solar system forming and settling into orbit**
 ![Solar system](gifs/solar_system.gif)
@@ -70,6 +66,9 @@ pip install pygame numpy
 ```bash
 python retrograde.py
 ```
+
+---
+
 ## Controls
 
 ### Simulation
@@ -138,6 +137,18 @@ python retrograde.py
 
 ---
 
+## Performance & Technical Notes
+
+The most physically accurate approach to N-body gravity is to calculate the gravitational influence of every body on every other body each frame. This produces realistic results but is difficult to run efficiently, since the number of calculations grows with the square of the body count.
+
+**Switching to NumPy** was the single biggest performance win. The original implementation used pure Python loops to compute gravitational forces, which became noticeably slow beyond around 50 bodies. Rewriting the force calculations using NumPy, which executes in compiled C under the hood, brought the simulation to a comfortable 60fps with several hundred bodies at once.
+
+**Spatial partitioning** was explored next, inspired by the Barnes-Hut algorithm which achieves O(n log n) scaling by treating grouped bodies as single mass points. A simpler grid based version was implemented here, but it ran into a problem inherent to gravitational simulations: bodies cluster. As gravity pulls everything together, bodies collapse into the same cells, losing most of the advantage the partitioning was meant to provide. Given that and the already solid NumPy performance, it was set aside.
+
+**Collision detection** follows the same vectorised strategy, computing distances between all body pairs in a single NumPy pass and only processing pairs that are actually overlapping. The 700-body cap and periodic out-of-bounds cleanup keep the simulation running smoothly in practice.
+
+---
+
 ## More Than a Sandbox
 
 Retrograde began as a gravity simulator, but the tools push it closer to a lightweight physics engine. Pinned bodies act as fixed gravitational anchors. Ghost bodies exert force without participating in collisions. Gravity itself can even be flipped from attractive to repulsive.
@@ -151,20 +162,6 @@ What makes the simulation interesting is what was never explicitly programmed. S
 None of that behavior was scripted. It emerges naturally from the physics.
 
 The simulation is not intended to be perfectly accurate, but under the right conditions it can come surprisingly close.
-
----
-
-## Performance & Technical Notes
-
-The most physically accurate approach to N-body gravity is to calculate the gravitational influence of every body on every other body each frame. This produces realistic results but is difficult to run efficiently, since the number of calculations grows with the square of the body count.
-
-**Switching to NumPy** was the single biggest performance win. The original implementation used pure Python loops to compute gravitational forces, which became noticeably slow beyond around 50 bodies. Rewriting the force calculations using NumPy, which executes in compiled C under the hood, brought the simulation to a comfortable 60fps with several hundred bodies at once.
-
-**Spatial partitioning** was explored as a way to reduce the per-frame calculation cost further. The approach divided the simulation space into a grid of cells, treating the total mass of each cell as a single gravitational source located at the cell's centre, rather than computing interactions with every individual body inside it. In theory this should have been significantly faster at high body counts, but it ran into a fundamental problem: gravity causes bodies to cluster. As the simulation progresses, bodies naturally pull toward each other and collapse into the same region of space, which means they end up in the same cells. At that point the algorithm loses most of its advantage, since a cell containing many bodies still requires individual calculations between them, pushing the cost back toward the same square scaling the partitioning was meant to avoid. Combined with the overhead of rebuilding the grid each frame, the fully vectorised NumPy approach turned out to be faster in practice, so spatial partitioning was ultimately set aside.
-
-**Collision detection** follows the same strategy: distances between all body pairs are computed in a single NumPy pass each frame, and only pairs that are actually overlapping get handed off to the collision resolver. This keeps collision handling fast even with hundreds of bodies on screen.
-
-The 700-body cap and periodic out-of-bounds cleanup exist as practical guardrails. The simulation stays smooth up to the cap, beyond which frame time degrades noticeably.
 
 ---
 
