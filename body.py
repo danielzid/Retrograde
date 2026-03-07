@@ -19,23 +19,14 @@ class Body:
         self.x += self.vx * dt
         self.y += self.vy * dt
 
-    def draw(self, surf):
+    def draw(self, surf, sx, sy, world_to_screen):
         pts = list(self.trail)
         for i in range(1, len(pts)):
-            pygame.draw.line(
-                surf,
-                (180, 180, 180),
-                (int(pts[i-1][0]), int(pts[i-1][1])),
-                (int(pts[i][0]),   int(pts[i][1])),
-                1
-            )
+            x1, y1 = world_to_screen(pts[i-1][0], pts[i-1][1])
+            x2, y2 = world_to_screen(pts[i][0],   pts[i][1])
+            pygame.draw.line(surf, (180, 180, 180), (x1, y1), (x2, y2), 1)
 
-        pygame.draw.circle(
-            surf,
-            self.body_color(),
-            (int(self.x), int(self.y)),
-            self.radius
-        )
+        pygame.draw.circle(surf, self.body_color(), (sx, sy), self.radius)
 
     def body_color(self):
         m = self.mass
