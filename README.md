@@ -1,11 +1,18 @@
 # RETROGRADE
 ### N-Body Physics Simulator
+![demo_GIF2](https://github.com/user-attachments/assets/fac97458-3ed9-400c-91c7-4a0366059a1e)
 
-> *Galaxies, black holes, solar systems, atomic chaos. Set the rules and see what the universe does with them.*
+> *Celestial harmony, Atomic chaos, Impossible physics.*
 
 Retrograde is an interactive N-body physcis simulator built with Python and Pygame. Spawn stars, binary systems, solar systems, singularities, and anomalies, then watch Newtonian (and not so Newtonian) physics do the rest.
 
 Retrograde grew out of a 5th grade science fair project where a model solar system was built and animated by hand, filmed using the camera on a brand new Nintendo 3DS. That project sparked a fascination with orbital mechanics and how so much complexity can emerge from such a simple rule. This is the grown up version of that idea.
+
+Tech Stack:
+Python
+NumPy
+Pygame
+## Previews
 
 ---
 
@@ -15,7 +22,6 @@ Retrograde grew out of a 5th grade science fair project where a model solar syst
 
 ---
 
-## Previews
 
 **Solar system forming and settling into orbit**
 ![Solar system](gifs/solar_system.gif)
@@ -33,7 +39,7 @@ Retrograde grew out of a 5th grade science fair project where a model solar syst
 
 ## Features
 
-- **Vectorised O(n²) gravity** powered by NumPy for smooth simulation of hundreds of bodies
+- **Vectorised O(n²) gravity** using NumPy for smooth simulation of hundreds of bodies
 - **4 collision modes** — Merge, Explode, Implode, or Elastic; switch on the fly
 - **7 spawn types** — Single body, Solar System, Cluster, Binary (equal/unequal), Singularity, Anomaly
 - **Black hole formation** — Bodies that accumulate enough mass collapse into singularities with an animated birth sequence
@@ -140,13 +146,17 @@ An `icon.ico` file is expected in the same directory. If running as a bundled ex
 
 ## More Than a Sandbox
 
-Retrograde started as a gravity simulator, but the set of tools it gives you pushes it closer to a lightweight physics engine. Pinned bodies act as fixed gravitational anchors, ghost bodies pull and push without taking part in collisions, and gravity itself can be flipped from attractive to repulsive. You can place anything from a lone particle to a full solar system in a few clicks, with control over mass, spin, and starting velocity.
+Retrograde began as a gravity simulator, but the tools push it closer to a lightweight physics engine. Pinned bodies act as fixed gravitational anchors. Ghost bodies exert force without participating in collisions. Gravity itself can even be flipped from attractive to repulsive.
 
-That flexibility means you can model a pretty wide range of real world and theoretical setups. Bodies can be celestial objects, with planets carving stable orbits around a star, binary pairs locked in mutual rotation, or a black hole tearing through a cluster. Or they can stand in for atomic scale particles, with repulsive anomalies behaving like like charges, pinned bodies acting as fixed nuclei, and ghosts representing fields that exert influence without making contact. Flip gravity and you are in stranger territory, expansion dynamics, configurations with no real world equivalent, whatever you want to try.
+You can spawn anything from a single particle to a full solar system with control over mass, spin, and initial velocity. That flexibility makes it possible to model a wide range of systems.
 
-What makes it genuinely interesting though is what you did not program. Spiral arms trail off rotating clusters without any special logic for them. Bodies in stable orbits get flung into escape trajectories the moment a third mass wanders too close, exactly the way the three-body problem plays out in reality. Clusters slowly lose their outer members over time as energy shuffles through repeated close passes, which mirrors how real stellar clusters gradually evaporate. After a violent event like a merger or a singularity forming, the surviving system tends to settle into a dominant rotational direction, clockwise or anticlockwise, as angular momentum finds a new equilibrium. None of it was planned. It just falls out of the physics.
+Bodies can represent celestial objects, with planets settling into stable orbits, binary pairs rotating around each other, or a black hole tearing through a cluster. They can also represent atomic scale systems, where repulsive anomalies behave like like-charged particles, pinned bodies act as fixed nuclei, and ghost bodies represent fields that influence motion without direct contact. Flip gravity and the simulation enters stranger territory, expansion dynamics and configurations with no real world equivalent.
 
-It does not pretend to be physically accurate, but set things up right and it gets surprisingly close to the real thing.
+What makes the simulation interesting is what was never explicitly programmed. Spiral arms emerge from rotating clusters without special logic. Stable orbits collapse when a third body passes too close, just as in the real three body problem. Clusters gradually lose outer members as energy redistributes through repeated interactions, similar to the evaporation of real stellar clusters. After violent events like mergers or singularity formation, systems often settle into a dominant rotational direction as angular momentum redistributes.
+
+None of that behavior was scripted. It emerges naturally from the physics.
+
+The simulation is not intended to be perfectly accurate, but under the right conditions it can come surprisingly close.
 
 ---
 
