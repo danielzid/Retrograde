@@ -1,5 +1,10 @@
 # RETROGRADE
 ### N-Body Physics Simulator
+![Python](https://img.shields.io/badge/Python-3.8+-blue)
+![NumPy](https://img.shields.io/badge/NumPy-Vectorized-orange)
+![Pygame](https://img.shields.io/badge/Pygame-Graphics-green)
+
+
 ![demo_GIF2](https://github.com/user-attachments/assets/08ca8df9-e91f-4fe4-98ab-8f407027d055)
 
 > *Celestial systems, atomic-scale interactions, and emergent complexity.*
