@@ -1,13 +1,14 @@
 # physics.py
 from math import sqrt
 
-# gravity strength and softening
-G = 1.0
-SOFTEN = 5.0
+G = 3
+SOFTEN = 30
 
 def compute_accelerations(bodies):
-    # compute gravitational acceleration for each body
     n = len(bodies)
+    if n == 0:
+        return [], []
+
     ax = [0.0] * n
     ay = [0.0] * n
 
@@ -15,28 +16,15 @@ def compute_accelerations(bodies):
         bi = bodies[i]
         for j in range(i + 1, n):
             bj = bodies[j]
-
-            # vector between bodies
             dx = bj.x - bi.x
             dy = bj.y - bi.y
-
-            # softened distance
             dist2 = dx*dx + dy*dy + SOFTEN
             dist = sqrt(dist2)
+            f = G / (dist2 * dist)
 
-            # Newtonian gravity
-            force = G * bi.mass * bj.mass / dist2
-
-            # acceleration components
-            ax_i = force * dx / (dist * bi.mass)
-            ay_i = force * dy / (dist * bi.mass)
-            ax_j = -force * dx / (dist * bj.mass)
-            ay_j = -force * dy / (dist * bj.mass)
-
-            # accumulate
-            ax[i] += ax_i
-            ay[i] += ay_i
-            ax[j] += ax_j
-            ay[j] += ay_j
+            ax[i] += f * bj.mass * dx
+            ay[i] += f * bj.mass * dy
+            ax[j] -= f * bi.mass * dx
+            ay[j] -= f * bi.mass * dy
 
     return ax, ay
