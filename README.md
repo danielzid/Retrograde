@@ -6,7 +6,7 @@
 
 Retrograde is an interactive N-body physcis simulator built with Python and Pygame. Spawn stars, binary systems, solar systems, singularities, and anomalies, then watch Newtonian (and not so Newtonian) physics do the rest.
 
-Retrograde grew out of a 5th grade science fair project where a model solar system was built and animated by hand, filmed using the camera on a brand new Nintendo 3DS. That project sparked a fascination with orbital mechanics and how so much complexity can emerge from such a simple rule. This is the grown up version of that idea.
+Retrograde grew out of a 5th-grade science fair project where a model solar system was built and animated by hand, filmed using the camera on a Nintendo 3DS. That project sparked a fascination with orbital mechanics and how so much complexity can emerge from such simple rules. This project is the natural evolutoion  of that idea.
 
 Tech Stack:
 Python
@@ -39,15 +39,15 @@ Pygame
 ## Features
 
 - **Vectorised O(n²) gravity** using NumPy for smooth simulation of hundreds of bodies
-- **4 collision modes** — Merge, Explode, Implode, or Elastic; switch on the fly
-- **7 spawn types** — Single body, Solar System, Cluster, Binary (equal/unequal), Singularity, Anomaly
-- **Black hole formation** — Bodies that accumulate enough mass collapse into singularities with an animated birth sequence
-- **Anomalies** — Anti-gravity bodies that repel everything around them
-- **Ghost and Pinned bodies** — Ghosts pass through collisions; pinned bodies are fixed in space
-- **Camera system** — Zoom, pan, and follow any body
-- **Cursor attractor** — Hold right mouse button to pull bodies toward your cursor
-- **Live HUD** — Body count, kinetic energy, total mass, FPS, and per-body stats
-- **Gravity inversion** — Flip the sign of gravity for chaotic repulsive simulations
+- **4 collision modes** - Merge, Explode, Implode, or Elastic; switch on the fly
+- **7 spawn types** - Single body, Solar System, Cluster, Binary (equal/unequal), Singularity, Anomaly
+- **Black hole formation** - Bodies that accumulate enough mass collapse into singularities with an animated birth sequence
+- **Anomalies** - Anti-gravity bodies that repel everything around them
+- **Ghost and Pinned bodies** - Ghosts pass through collisions; pinned bodies are fixed in space
+- **Camera system** - Zoom, pan, and follow any body
+- **Cursor attractor** - Hold right mouse button to pull bodies toward your cursor
+- **Live HUD** - Body count, kinetic energy, total mass, FPS, and per-body stats
+- **Gravity inversion** - Flip the sign of gravity for chaotic repulsive simulations
 
 ---
 
@@ -70,11 +70,6 @@ pip install pygame numpy
 ```bash
 python retrograde.py
 ```
-
-An `icon.ico` file is expected in the same directory. If running as a bundled executable (PyInstaller), assets are loaded from the bundle automatically.
-
----
-
 ## Controls
 
 ### Simulation
