@@ -11,7 +11,7 @@
 
 Retrograde is an interactive N-body physics simulator built with Python, NumPy, and Pygame. Spawn stars, binary systems, solar systems, singularities, and anomalies, then watch Newtonian (and not so Newtonian) physics do the rest.
 
-Retrograde grew out of a 5th-grade science fair project where a model solar system was hand built and manually animated using the camera of a Nintendo 3DS. That project sparked a fascination with orbital mechanics and how so much complexity can emerge from such simple rules. This project is the natural evolution of that idea.
+Retrograde grew out of a 5th-grade science fair project where a model solar system was hand built and manually animated using the camera of a Nintendo 3DS. That project sparked a fascination with orbital mechanics and how complexity can emerge from such simple rules. This project is the natural evolution of that idea.
 
 Tech Stack: Python, NumPy, Pygame
 
