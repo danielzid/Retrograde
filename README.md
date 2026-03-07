@@ -149,7 +149,7 @@ The most physically accurate approach to N-body gravity is to calculate the grav
 
 ---
 
-## More Than a Sandbox
+## More Than a Toy
 
 Retrograde began as a gravity simulator, but the tools push it closer to a lightweight physics engine. Pinned bodies act as fixed gravitational anchors. Ghost bodies exert force without participating in collisions. Gravity itself can even be flipped from attractive to repulsive.
 
