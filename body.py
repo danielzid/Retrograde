@@ -1,4 +1,3 @@
-# body.py
 import pygame
 from math import sqrt
 from collections import deque

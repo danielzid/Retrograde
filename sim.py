@@ -1,8 +1,7 @@
-# sim.py
 import pygame
 from math import sqrt
 from body import Body
-from physics import compute_accelerations
+from physics import calc_accel, handle_collisions
 
 class Engine:
     def __init__(self):
@@ -10,22 +9,15 @@ class Engine:
         self.screen = pygame.display.set_mode((900, 700))
         pygame.display.set_caption("Retrograde")
         self.clock = pygame.time.Clock()
-        self.bodies = []
         self.running = True
+        self.bodies = []
 
         self.spawning = False
         self.spawn_x = 0
         self.spawn_y = 0
-        self.spawn_vel = 0.0
+        self.spawn_vel = 40.0 
         self.spawn_vx = 0.0
         self.spawn_vy = 0.0
-
-    def spawn_body(self, x, y, vx, vy):
-        mass = 80
-        b = Body(x, y, mass)
-        b.vx = vx
-        b.vy = vy
-        self.bodies.append(b)
 
     def handle_events(self):
         for event in pygame.event.get():
@@ -78,16 +70,26 @@ class Engine:
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_RIGHTBRACKET]:
-            self.spawn_vel = min(200.0, self.spawn_vel + 0.5)
+            self.spawn_vel = min(300.0, self.spawn_vel + 1.0)
         if keys[pygame.K_LEFTBRACKET]:
-            self.spawn_vel = max(0.0, self.spawn_vel - 0.5)
+            self.spawn_vel = max(0.0, self.spawn_vel - 1.0)
+
+    def spawn_body(self, x, y, vx, vy):
+        mass = 80
+        b = Body(x, y, mass)
+        b.vx = vx
+        b.vy = vy
+        self.bodies.append(b)
 
     def update(self, dt):
-        ax, ay = compute_accelerations(self.bodies)
+        ax, ay = calc_accel(self.bodies)
+
         for i, b in enumerate(self.bodies):
             b.vx += ax[i] * dt
             b.vy += ay[i] * dt
             b.update(dt)
+
+        handle_collisions(self.bodies)
 
     def draw(self):
         self.screen.fill((0, 0, 0))

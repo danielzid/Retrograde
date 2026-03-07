@@ -1,10 +1,10 @@
-# physics.py
 from math import sqrt
 
-G = 3
-SOFTEN = 30
+G = 8.0
+SOFTEN = 20
+ELASTICITY = 0.9   
 
-def compute_accelerations(bodies):
+def calc_accel(bodies):
     n = len(bodies)
     if n == 0:
         return [], []
@@ -28,3 +28,43 @@ def compute_accelerations(bodies):
             ay[j] -= f * bi.mass * dy
 
     return ax, ay
+
+
+def handle_collisions(bodies):
+    n = len(bodies)
+    for i in range(n):
+        for j in range(i + 1, n):
+            a = bodies[i]
+            b = bodies[j]
+
+            dx = b.x - a.x
+            dy = b.y - a.y
+            dist = sqrt(dx*dx + dy*dy)
+            min_dist = a.radius + b.radius
+
+            if dist < min_dist and dist > 0:
+                nx = dx / dist
+                ny = dy / dist
+
+                overlap = min_dist - dist
+                a.x -= nx * overlap * 0.5
+                a.y -= ny * overlap * 0.5
+                b.x += nx * overlap * 0.5
+                b.y += ny * overlap * 0.5
+
+                rvx = b.vx - a.vx
+                rvy = b.vy - a.vy
+                vel_along_normal = rvx * nx + rvy * ny
+
+                if vel_along_normal > 0:
+                    continue
+
+                impulse = -(1 + ELASTICITY) * vel_along_normal
+                impulse /= (1/a.mass + 1/b.mass)
+
+                ix = impulse * nx
+                iy = impulse * ny
+
+                a.vx -= ix / a.mass
+                a.vy -= iy / a.mass
+                b.vx += ix / b.mass
