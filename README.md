@@ -70,7 +70,6 @@ The simulation is not intended to be perfectly accurate, but under the right con
 
 ---
 
-## Quick Start
 ## Requirements
 
 - Python 3.8+
