@@ -19,7 +19,7 @@ Tech Stack: Python, NumPy, Pygame
 
 ## Demo
 
-[![Watch the demo](https://img.shields.io/badge/Watch-Demo-red?style=for-the-badge&logo=youtube)](YOUR_VIDEO_LINK_HERE)
+[![Watch Demo](https://img.youtube.com/vi/rSctSc4Y6zc/0.jpg)](https://youtu.be/rSctSc4Y6zc)
 
 ---
 
