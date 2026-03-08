@@ -14,7 +14,7 @@ Retrograde is an interactive N-body physics simulator built with Python, NumPy, 
 
 ## Demo
 
-[![Watch Demo](https://ytcards.demolab.com/?id=rSctSc4Y6zc&title=Retrograde+Demo&lang=en&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&width=400)](https://youtu.be/rSctSc4Y6zc)
+[![Watch Demo](https://ytcards.demolab.com/?id=rSctSc4Y6zc&title=Retrograde+Video+Demo&lang=en&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&width=400)](https://youtu.be/rSctSc4Y6zc)
 
 ---
 
