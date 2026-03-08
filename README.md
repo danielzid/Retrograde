@@ -9,7 +9,7 @@
 
 > *Celestial systems, atomic-scale interactions, and emergent complexity.*
 
-Retrograde is an interactive N-body physics simulator built with Python, NumPy, and Pygame. Spawn stars, binary systems, solar systems, singularities, and anomalies, then watch Newtonian (and not so Newtonian) physics do the rest.
+Retrograde is an interactive N-body physics simulator built with Python, NumPy, and Pygame. Spawn stars, binary systems, solar systems, singularities, and anomalies, and watch physics unfold. 
 
 Retrograde grew out of a 5th-grade science fair project where a model solar system was hand built and manually animated using the camera of a Nintendo 3DS. That project sparked a fascination with orbital mechanics and how complexity can emerge from such simple rules. This project is the natural evolution of that idea.
 
@@ -41,7 +41,7 @@ Tech Stack: Python, NumPy, Pygame
 
 The most physically accurate approach to N-body gravity is to calculate the gravitational influence of every body on every other body each frame. This produces realistic results but is difficult to run efficiently, since the number of calculations grows with the square of the body count.
 
-**Switching to NumPy** was the single biggest performance win. The original implementation used pure Python loops to compute gravitational forces, which became noticeably slow beyond around 50 bodies. Rewriting the force calculations using NumPy, which executes in compiled C under the hood, brought the simulation to a comfortable 60fps with several hundred bodies at once.
+**Switching to NumPy** provided the single biggest performance improvement. The original implementation used pure Python loops to compute gravitational forces, which became noticeably slow beyond around 50 bodies. Rewriting the force calculations using NumPy, which executes in compiled C under the hood, brought the simulation to a comfortable 60fps with several hundred bodies at once.
 
 **Spatial partitioning** was explored next, inspired by the Barnes-Hut algorithm which achieves O(n log n) scaling by treating grouped bodies as single mass points. A simpler grid based version was implemented here, but it ran into a problem inherent to gravitational simulations: bodies cluster. As gravity pulls everything together, bodies collapse into the same cells, losing most of the advantage the partitioning was meant to provide. Given that and the already solid NumPy performance, it was set aside.
 
