@@ -4,18 +4,11 @@
 ![NumPy](https://img.shields.io/badge/NumPy-Vectorized-orange)
 ![Pygame](https://img.shields.io/badge/Pygame-Graphics-green)
 
-
 ![demo_GIF2](https://github.com/user-attachments/assets/08ca8df9-e91f-4fe4-98ab-8f407027d055)
 
 > *Celestial systems, atomic-scale interactions, and emergent complexity.*
 
-Retrograde is an interactive N-body physics simulator built with Python, NumPy, and Pygame. Spawn stars, binary systems, solar systems, singularities, and anomalies and watch physics unfold.
-
-Retrograde grew out of a 5th-grade science fair project where a model solar system was hand built and manually animated using the camera of a Nintendo 3DS. That project sparked a fascination with orbital mechanics and how complexity can emerge from such simple rules. This project is the natural evolution of that idea.
-
-### Inspiration for Retrograde
-![DSCN0030_Original](https://github.com/user-attachments/assets/f0b128dd-55b2-4ab1-baf4-d72ca7eac15a)
-
+Retrograde is an interactive N-body physics simulator built with Python, NumPy, and Pygame. Spawn stars, binary systems, solar systems, singularities, anomalies and watch physics unfold.
 
 ---
 
@@ -23,8 +16,14 @@ Retrograde grew out of a 5th-grade science fair project where a model solar syst
 
 [![Watch Demo](https://ytcards.demolab.com/?id=rSctSc4Y6zc&title=Retrograde+Demo&lang=en&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&width=400)](https://youtu.be/rSctSc4Y6zc)
 
-Tech Stack: Python, NumPy, Pygame
 ---
+
+
+
+### Inspiration for Retrograde
+Retrograde grew out of a 5th-grade science fair project where a model solar system was hand built and manually animated using the camera of a Nintendo 3DS. That project sparked a fascination with orbital mechanics and how complexity can emerge from such simple rules. This project is the natural evolution of that idea.
+![DSCN0030_Original](https://github.com/user-attachments/assets/f0b128dd-55b2-4ab1-baf4-d72ca7eac15a)
+
 
 ## Features
 - **Real-Time** interactive physics sandbox
@@ -33,6 +32,7 @@ Tech Stack: Python, NumPy, Pygame
 - **Multiple collision modes** - Merge, Explode, Implode, or Elastic; switch on the fly
 - **Camera system** - Zoom, pan, and follow any body
 - **Live HUD** - Body count, kinetic energy, total mass, FPS, and per-body stats
+  
 - **7 spawn types** - Single body, Solar System, Cluster, Binary (equal/unequal), Singularity, Anomaly
 - **Black hole formation** - Bodies that accumulate enough mass collapse into singularities with an animated birth sequence
 - **Anomalies** - Anti-gravity bodies that repel everything around them
@@ -54,13 +54,15 @@ The most physically accurate approach to N-body gravity is to calculate the grav
 
 ## More Than a Toy
 
-Retrograde began as a gravity simulator, but the tools push it closer to a lightweight physics engine. Pinned bodies act as fixed gravitational anchors. Ghost bodies exert force without participating in collisions. Gravity itself can even be flipped from attractive to repulsive.
+Retrograde began as a gravity simulator, but the tools push it closer to a lightweight physics engine.
 
-You can spawn anything from a single particle to a full solar system with control over mass, spin, and initial velocity. That flexibility makes it possible to model a wide range of systems.
+Pinned bodies act as fixed gravitational anchors, ghost bodies exert force without participating in collisions, and gravity itself can be flipped from attractive to repulsive. You can spawn anything from a single particle to a full solar system with control over mass, spin, and initial velocity.
 
-Bodies can represent celestial objects, with planets settling into stable orbits, binary pairs rotating around each other, or a black hole tearing through a cluster. They can also represent atomic scale systems, where repulsive anomalies behave like like charged particles, pinned bodies act as fixed nuclei, and ghost bodies represent fields that influence motion without direct contact. Flip gravity and the simulation enters stranger territory, expansion dynamics and configurations with no real world equivalent.
+This flexibility makes it possible to model a wide range of systems. Bodies can represent celestial objects, with planets settling into stable orbits, binary pairs rotating around each other, or a black hole tearing through a cluster. They can also represent atomic scale systems, where repulsive anomalies behave like charged particles, pinned bodies act as fixed nuclei, and ghost bodies represent fields that influence motion without direct contact.
 
-What makes the simulation interesting is what was never explicitly programmed. Spiral arms emerge from rotating clusters without special logic. Stable orbits collapse when a third body passes too close, just as in the real three body problem. Clusters gradually lose outer members as energy redistributes through repeated interactions, similar to the evaporation of real stellar clusters. After violent events like mergers or singularity formation, systems often settle into a dominant rotational direction as angular momentum redistributes.
+Flip gravity and the simulation enters stranger territory with expansion dynamics and configurations that have no real world equivalent.
+
+What makes the simulation interesting is what was never explicitly programmed. Spiral arms emerge from rotating clusters without special logic. Stable orbits collapse when a third body passes too close, reflecting the real three body problem. Clusters gradually lose outer members as energy redistributes through repeated interactions, similar to the evaporation of stellar clusters. After violent events such as mergers or singularity formation, systems often settle into a dominant rotational direction as angular momentum redistributes.
 
 None of that behavior was scripted. It emerges naturally from the physics.
 
@@ -68,7 +70,7 @@ The simulation is not intended to be perfectly accurate, but under the right con
 
 ---
 
-
+## Quick Start
 ## Requirements
 
 - Python 3.8+
