@@ -151,7 +151,7 @@ python retrograde.py
 
 ## Physics Notes
 
-- Gravitational constant `G = 1.3` (tuned for interactive feel, not physical accuracy)
+- Gravity `G = 1.3` and other simulation constants are tuned for interactive feel, not physical accuracy.
 - Softening factor prevents singularities in the force calculation at close range
 - Bodies are automatically cleaned up beyond a radius of 15,000 units from the reference body, and total body count is capped at 700
 - Mass color ramp runs from red dwarf (low mass) through solar white to blue giant (high mass)
