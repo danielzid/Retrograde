@@ -46,7 +46,7 @@ This project is the natural evolution of that idea.
 
 The most physically accurate approach to N-body gravity is to calculate the gravitational influence of every body on every other body each frame. This produces realistic results but is difficult to run efficiently, since the number of calculations grows with the square of the body count.
 
-**Switching to NumPy** provided the single biggest performance improvement. The original implementation used pure Python loops to compute gravitational forces, which became noticeably slow beyond around 50 bodies. Rewriting the force calculations using NumPy, which executes in compiled C, brought the simulation to a comfortable 60fps with several hundred bodies at once.
+**Switching to NumPy** provided the single biggest performance improvement. The original implementation used pure Python loops to compute gravitational forces, which became noticeably slow beyond around 50 bodies. Rewriting the force calculations using NumPy, which executes in compiled C, brought the simulation to comfortable frame-rates with several hundred bodies at once.
 
 **Spatial partitioning** was explored next, inspired by the Barnes-Hut algorithm which achieves O(n log n) scaling by treating grouped bodies as single mass points. A simpler grid based version was implemented here, but it ran into a problem inherent to gravitational simulations: bodies cluster. As gravity pulls everything together, bodies collapse into the same cells, losing most of the advantage the partitioning was meant to provide. Given that and the already solid NumPy performance, it was set aside.
 
