@@ -19,7 +19,7 @@ Tech Stack: Python, NumPy, Pygame
 
 ## Demo
 
-[![Watch Demo](https://img.youtube.com/vi/rSctSc4Y6zc/0.jpg)](https://youtu.be/rSctSc4Y6zc)
+[![Watch Demo](https://ytcards.demolab.com/?id=rSctSc4Y6zc&title=Retrograde+Demo&lang=en&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&width=400)](https://youtu.be/rSctSc4Y6zc)
 
 ---
 
