@@ -3,24 +3,24 @@ from math import sqrt, cos, sin, atan2, pi
 from random import randint, uniform, gauss, random, choice, sample
 from body import Body, TRAIL_THRESHOLD, BH_BIRTH_FRAMES
 
-G                           = 1.3
+G = 1.3
 SOFTEN                      = 30
 SINGULARITY_THRESHOLD       = 10000
 SINGULARITY_THRESHOLD_IMPLODE = 30_000
-EXPLOSION_THRESHOLD         = 43000
-IMPLODE_THRESHOLD           = 50000
+EXPLOSION_THRESHOLD    = 43000
+IMPLODE_THRESHOLD      = 50000
 
 BH_SHARD_SPEED_MIN = 50
 BH_SHARD_SPEED_MAX = 150
 BH_SHARD_MASS      = 0.5
 
-MAX_MASS       = 100_000
-MIN_MASS       = 0.5
-MAX_VEL        = 500.0
+MAX_MASS   = 100_000
+MIN_MASS  = 0.5
+MAX_VEL   = 500.0
 MIN_VEL_SCALE  = 0.001
 SPAWN_MAX_VEL  = 200.0
 
-CLEANUP_RADIUS         = 15_000
+CLEANUP_RADIUS     = 15_000
 CLEANUP_FRAME_INTERVAL = 10
 MAX_BODIES             = 700
 
@@ -39,10 +39,10 @@ def compute_accelerations(bodies):
     if count == 0:
         return [], []
 
-    pos_x    = np.array([b.x    for b in bodies], dtype=np.float64)
+    pos_x  = np.array([b.x    for b in bodies], dtype=np.float64)
     pos_y    = np.array([b.y    for b in bodies], dtype=np.float64)
     masses   = np.array([b.mass for b in bodies], dtype=np.float64)
-    # Anomalies exert repulsive gravity
+    # Anomalies exert repulsive gra
     gravity_signs = np.array(
         [-1 if b.is_anomaly else 1 for b in bodies], dtype=np.float64
     )
