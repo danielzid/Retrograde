@@ -89,7 +89,7 @@ pip install pygame numpy
 ## Running
 
 ```bash
-python retrograde.py
+python sim.py
 ```
 
 ## Controls
@@ -163,7 +163,7 @@ python retrograde.py
 ## Project Structure
 
 ```
-retrograde.py
+sim.py
 body.py
 physics.py
 ui.py
