@@ -176,7 +176,7 @@ def draw_instructions(surface):
             "M             Cycle collision mode",
             "Alt           Flip gravity sign",
             "R             Reset",
-            "I             Toggle this panel",
+            "I             Toggle info panel",
             "",
             "CAMERA",
             "Scroll        Zoom",
