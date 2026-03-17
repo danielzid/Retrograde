@@ -44,7 +44,7 @@ This project is the natural evolution of that idea.
 ---
 ## Performance & Technical Notes
 
-The most physically accurate approach to N-body gravity is to calculate the gravitational influence of every body on every other body each frame. This produces realistic results but is difficult to run efficiently, since the number of calculations grows with the square of the body count.
+The initial approach to N-body gravity is to calculate the gravitational influence of every body on every other body each frame. This produces realistic results but is difficult to run efficiently, since the number of calculations grows with the square of the body count.
 
 **Switching to NumPy** provided the single biggest performance improvement. The original implementation used pure Python loops to compute gravitational forces, which became noticeably slow beyond around 50 bodies. Rewriting the force calculations using NumPy, which executes in compiled C, brought the simulation to comfortable frame-rates with several hundred bodies at once.
 
